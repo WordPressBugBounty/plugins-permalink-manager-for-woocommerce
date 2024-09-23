@@ -1,0 +1,1 @@
+# plugins-permalink-manager-for-woocommerce
