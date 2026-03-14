@@ -8,7 +8,7 @@
  * Requires at least: 5.0
  * Author URI: https://woocommerce-permalink-manager.com/
  * Text Domain: permalink-manager-for-woocommerce
- * WC tested up to: 9.1
+ * WC tested up to: 10.6.0
  */
 define( "BWLM_file", __FILE__ );
 
