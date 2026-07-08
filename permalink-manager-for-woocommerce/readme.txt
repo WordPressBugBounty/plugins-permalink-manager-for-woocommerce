@@ -4,8 +4,8 @@ Contributors: dholovnia, berocket
 Donate link: https://berocket.com/?utm_source=wordpress_org&utm_medium=donate&utm_campaign=permalink_manager
 Tags: remove url, url, permalink manager, permalink editor, seo
 Requires at least: 5.0
-Tested up to: 6.9.4
-Stable tag: 1.0.8.2
+Tested up to: 7.0
+Stable tag: 1.0.8.3
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -93,6 +93,10 @@ Please open site admin -> Settings -> Permalinks and scroll down to Permalink Ma
 
 
 == Changelog ==
+
+= 1.0.8.3 =
+* Enhancement – Compatibility version: WordPress 7.0 and WooCommerce 10.9
+* Fix – Save settings vulnerability
 
 = 1.0.8.2 =
 * Enhancement – Compatibility version: WordPress 6.6 and WooCommerce 9.1

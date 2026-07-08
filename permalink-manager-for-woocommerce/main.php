@@ -3,12 +3,12 @@
  * Plugin Name: Permalink Manager for WooCommerce
  * Plugin URI: https://wordpress.org/plugins/permalink-manager-for-woocommerce/
  * Description: Permalink Manager for WooCommerce
- * Version: 1.0.8.2
+ * Version: 1.0.8.3
  * Author: BeRocket
  * Requires at least: 5.0
  * Author URI: https://woocommerce-permalink-manager.com/
  * Text Domain: permalink-manager-for-woocommerce
- * WC tested up to: 10.6.0
+ * WC tested up to: 10.9
  */
 define( "BWLM_file", __FILE__ );
 
@@ -85,10 +85,14 @@ class BeRocketLinkManager {
     }
 
     public function save_permalink_option() {
-        if ( !current_user_can('manage_options') ) return;
-        $post = array( 'category' => '', 'product' => '', 'tag' => '' );
-
         if ( !empty( $_POST[ $this->settings ] ) ) {
+            if ( ! current_user_can('manage_options')
+                || empty( $_POST['bwlm_permalink_nonce'] )
+                || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['bwlm_permalink_nonce'] ) ), 'bwlm_save_permalink_options' )
+            ) return;
+
+            $post = array( 'category' => '', 'product' => '', 'tag' => '' );
+
             $settings = $_POST[ $this->settings ];
             if ( in_array( $settings['category'], array('slug', 'hierarchical') ) )
                 $post['category'] = $settings['category'];
@@ -138,6 +142,7 @@ class BeRocketLinkManager {
         $options  = get_option( $this->settings );
         ?>
         <h2 class="bwlm" id="bwlm-settings"><?=__( 'Permalink Manager for WooCommerce', 'permalink-manager-for-woocommerce' )?></h2>
+        <?php wp_nonce_field( 'bwlm_save_permalink_options', 'bwlm_permalink_nonce' ); ?>
         <h3 class="bwlm"><?=__( 'General', 'permalink-manager-for-woocommerce' )?></h3>
         <table class="form-table bwlm">
             <tbody>
