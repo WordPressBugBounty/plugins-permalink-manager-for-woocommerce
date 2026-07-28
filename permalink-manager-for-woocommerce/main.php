@@ -3,14 +3,15 @@
  * Plugin Name: Permalink Manager for WooCommerce
  * Plugin URI: https://wordpress.org/plugins/permalink-manager-for-woocommerce/
  * Description: Permalink Manager for WooCommerce
- * Version: 1.0.8.3
+ * Version: 1.0.8.4
  * Author: BeRocket
  * Requires at least: 5.0
  * Author URI: https://woocommerce-permalink-manager.com/
  * Text Domain: permalink-manager-for-woocommerce
- * WC tested up to: 10.9
+ * WC tested up to: 10.9.4
  */
 define( "BWLM_file", __FILE__ );
+define( "BeRocket_Link_Manager_version", '1.0.8.4' );
 
 class BeRocketLinkManager {
     private $options     = array();
@@ -149,7 +150,7 @@ class BeRocketLinkManager {
             <tr>
                 <th><label for="bwlm-settings-prefix"><?=__( 'Prefix', 'permalink-manager-for-woocommerce' )?></label></th>
                 <td>
-                    <input id="bwlm-settings-prefix" name="<?= $this->settings ?>[prefix]" type="text" value="<?=$this->get( $options, 'prefix' ) ?>">
+                    <input id="bwlm-settings-prefix" name="<?= $this->settings ?>[prefix]" type="text" value="<?=esc_attr( $this->get( $options, 'prefix' ) ) ?>">
                     <span class="description"><?=__( 'Add <code>shop</code> to have', 'permalink-manager-for-woocommerce' )?> <code><?= home_url( '/shop/category/' ) ?></code></span>
                 </td>
             </tr>
