@@ -4,8 +4,8 @@ Contributors: dholovnia, berocket
 Donate link: https://berocket.com/?utm_source=wordpress_org&utm_medium=donate&utm_campaign=permalink_manager
 Tags: remove url, url, permalink manager, permalink editor, seo
 Requires at least: 5.0
-Tested up to: 7.0.2
-Stable tag: 1.0.8.4
+Tested up to: 7.0.4
+Stable tag: 1.0.9
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -93,6 +93,10 @@ Please open site admin -> Settings -> Permalinks and scroll down to Permalink Ma
 
 
 == Changelog ==
+
+= 1.0.9 =
+* Enhancement - Updated BeRocket framework.
+* Security - Hardened framework validation and output handling.
 
 = 1.0.8.4 =
 * Security – Escape the Prefix setting value in the admin form to prevent stored cross-site scripting.
