@@ -6,7 +6,7 @@
  * Version: 1.0.9
  * Author: BeRocket
  * Requires at least: 5.0
- * Tested up to: 7.0.4
+ * Tested up to: 7.1
  * Author URI: https://woocommerce-permalink-manager.com/
  * Text Domain: permalink-manager-for-woocommerce
  * WC tested up to: 11.0.1

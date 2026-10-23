@@ -4,7 +4,7 @@ Contributors: dholovnia, berocket
 Donate link: https://berocket.com/?utm_source=wordpress_org&utm_medium=donate&utm_campaign=permalink_manager
 Tags: remove url, url, permalink manager, permalink editor, seo
 Requires at least: 5.0
-Tested up to: 7.0.4
+Tested up to: 7.1
 Stable tag: 1.0.9
 Requires PHP: 7.4
 License: GPLv2 or later
