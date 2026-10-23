@@ -3,21 +3,22 @@
  * Plugin Name: Permalink Manager for WooCommerce
  * Plugin URI: https://wordpress.org/plugins/permalink-manager-for-woocommerce/
  * Description: Permalink Manager for WooCommerce
- * Version: 1.0.9
+ * Version: 1.0.9.1
  * Author: BeRocket
  * Requires at least: 5.0
- * Tested up to: 7.1
+ * Tested up to: 7.1.3
  * Author URI: https://woocommerce-permalink-manager.com/
  * Text Domain: permalink-manager-for-woocommerce
- * WC tested up to: 11.0.1
+ * WC tested up to: 11.2.1
  */
 define( "BWLM_file", __FILE__ );
-define( "BeRocket_Link_Manager_version", '1.0.9' );
+define( "BeRocket_Link_Manager_version", '1.0.9.1' );
 
 class BeRocketLinkManager {
     private $options     = array();
     private $txn_options = array( 'product_cat' => '', 'product_tag' => '' );
     private $product_base;
+    private $redirect_product_id = 0;
 
     public $settings = 'wc_links';
 
@@ -565,6 +566,10 @@ class BeRocketLinkManager {
                     and
                     "$request_scheme://$_SERVER[HTTP_HOST]" . urldecode( $_SERVER["REQUEST_URI"] ) != $post_url
                 ) {
+                    // Keep normal routing intact; recover an old product URL only if it becomes a 404.
+                    if ( $this->get( $this->options, 'redirect_old_links' ) and empty( $replace ) ) {
+                        $this->redirect_product_id = $ID;
+                    }
                     add_filter('do_redirect_guess_404_permalink', '__return_true', 99999999);
 		            return $request;
 	            }
@@ -595,6 +600,15 @@ class BeRocketLinkManager {
 
     public function redirect_301() {
         global $wp, $bwlm;
+
+        if ( $this->redirect_product_id and is_404()
+            and $this->get( $this->options, 'redirect_old_links' )
+            and ! is_admin() and ! $this->is_preview()
+            and 'publish' === get_post_status( $this->redirect_product_id )
+        ) {
+            wp_safe_redirect( get_the_permalink( $this->redirect_product_id ), 301 );
+            exit();
+        }
 
         if ( $this->get( $this->options, 'redirect_old_links' ) and empty( $wp->query_vars[ 'bwlm' ] )
             and empty( $bwlm )

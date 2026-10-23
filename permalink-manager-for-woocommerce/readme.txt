@@ -4,8 +4,8 @@ Contributors: dholovnia, berocket
 Donate link: https://berocket.com/?utm_source=wordpress_org&utm_medium=donate&utm_campaign=permalink_manager
 Tags: remove url, url, permalink manager, permalink editor, seo
 Requires at least: 5.0
-Tested up to: 7.1
-Stable tag: 1.0.9
+Tested up to: 7.1.3
+Stable tag: 1.0.9.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -93,6 +93,10 @@ Please open site admin -> Settings -> Permalinks and scroll down to Permalink Ma
 
 
 == Changelog ==
+
+= 1.0.9.1 =
+* Fix - Restore 301 redirects from old product category URLs after changing the Yoast SEO primary category when Redirect old links is enabled.
+* Enhancement - Tested compatibility with WordPress 7.1.3 and WooCommerce 11.2.1.
 
 = 1.0.9 =
 * Enhancement - Updated BeRocket framework.
